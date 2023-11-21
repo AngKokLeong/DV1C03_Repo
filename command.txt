@@ -1,0 +1,9 @@
+
+To Build the image
+
+docker build --tag wb1_image_3114394F .
+
+
+
+To run the container using the image
+docker run -d wb1_image_3114394F --name WebApp_3114394F 
