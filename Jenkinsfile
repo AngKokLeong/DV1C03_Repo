@@ -47,22 +47,24 @@ pipeline {
                         input(id: 'userInput', message: 'Merge to?')
                     }
                 }
-            }
+                post {
+                    success {
+                        script{
+                            env.RELEASE_OUTCOME = true
+                        }
+                    }
 
-            post {
-
-                success {
-                    script{
-                        env.RELEASE_OUTCOME = true
+                    aborted {
+                        script {
+                            env.RELEASE_OUTCOME = false
+                        }
                     }
                 }
-
-                aborted {
-                    script {
-                        env.RELEASE_OUTCOME = false
-                    }
-                }
             }
+
+
+            //https://stackoverflow.com/questions/69811869/getting-null-as-value-from-input-step-method-in-case-of-abort-button-click-ins
+            //https://www.jenkins.io/doc/book/pipeline/syntax/#post
 
             stage ('S5 3114394F'){
                 steps {
