@@ -50,9 +50,11 @@ pipeline {
             stage ('S4 3114394F'){
                 steps {
                     script {
-                        def PROMPT_VALUE = input(id: 'PROMPT_VALUE' , message: "3114394F, proceed to release the work to next phase?")
+                        env.RELEASE_OUTCOME = input(id: 'PROMPT_VALUE' , message: "3114394F, proceed to release the work to next phase?", ok: 'Select Option',
+                                    parameters: [choice(name: 'RELEASE_OUTCOME', choices: 'Proceed/Abort', description: 'What is the release scope?')]
+                        )
 
-                        println(PROMPT_VALUE)
+                        echo "${env.RELEASE_OUTCOME}"
                     }
                     
                 }
@@ -60,7 +62,7 @@ pipeline {
 
             stage ('S5 3114394F'){
                 steps {
-                     sh "echo ${env.PROMPT_VALUE}"
+                     sh "echo ${env.RELEASE_OUTCOME}"
                 }
             }
         }
