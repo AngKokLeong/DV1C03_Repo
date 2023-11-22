@@ -66,27 +66,19 @@ pipeline {
             //https://www.jenkins.io/doc/book/pipeline/syntax/#post
 
             stage ('S5 3114394F'){
-                when {
-                    expression {
-                        env.RELEASE_OUTCOME == true
-                    }
-                }
                 steps {
-                     echo "${env.RELEASE_OUTCOME}"
+                    script {
+                        if (env.RELEASE_OUTCOME == true) {
+                            echo "${env.RELEASE_OUTCOME}"
+                        } else if (env.RELEASE_OUTCOME == false) {
+                            echo "${env.RELEASE_OUTCOME}"
+                        }
+                    }
                 }
             }
 
 
-            stage ('S5 3114394F'){
-                when {
-                    expression {
-                        env.RELEASE_OUTCOME == false
-                    }
-                }
-                steps {
-                     echo "${env.RELEASE_OUTCOME}"
-                }
-            }
+
         }
 
 
