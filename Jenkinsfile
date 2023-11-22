@@ -1,9 +1,5 @@
 pipeline {
 
-        parameters {
-            choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
-        }
-
         agent any
 
         options {
@@ -11,8 +7,7 @@ pipeline {
         }
 
         environment {
-
-            PROMPT_VALUE = ""
+            RELEASE_OUTCOME = ""
         }
 
         stages {
@@ -49,15 +44,23 @@ pipeline {
 
             stage ('S4 3114394F'){
                 steps {
-                    script {
-
-                        def userInput = input(id: 'userInput', message: 'Merge to?')
-
-                        println(userInput); //Use this value to branch to different logic if needed
-        
-                 
+                        input(id: 'userInput', message: 'Merge to?')
                     }
-                    
+                }
+            }
+
+            post {
+
+                success {
+                    script{
+                        env.RELEASE_OUTCOME = true
+                    }
+                }
+
+                aborted {
+                    script {
+                        env.RELEASE_OUTCOME = false
+                    }
                 }
             }
 
