@@ -57,13 +57,16 @@ pipeline {
 
             stage ('S4 3114394F'){
                 steps {
-                    input(message: "3114394F, proceed to release the work to next phase?", parameters: [string('PROMPT_VALUE')])
+                    script {
+                        env.PROMPT_VALUE = input(message: "3114394F, proceed to release the work to next phase?")
+                    }
+                    
                 }
             }
 
             stage ('S5 3114394F'){
                 steps {
-                     sh "echo ${PROMPT_VALUE}"
+                     sh "echo ${env.PROMPT_VALUE}"
                 }
             }
         }
