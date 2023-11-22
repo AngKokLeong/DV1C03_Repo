@@ -68,7 +68,7 @@ pipeline {
             stage ('S5 3114394F'){
                 when {
                     expression {
-                        env.RELEASE_OUTCOME.toBoolean() = true
+                        env.RELEASE_OUTCOME == true
                     }
                 }
                 steps {
@@ -80,7 +80,7 @@ pipeline {
             stage ('S5 3114394F'){
                 when {
                     expression {
-                        env.RELEASE_OUTCOME.toBoolean() = false
+                        env.RELEASE_OUTCOME == false
                     }
                 }
                 steps {
