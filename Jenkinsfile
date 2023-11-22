@@ -57,7 +57,7 @@ pipeline {
 
             stage ('S4 3114394F'){
                 steps {
-                    input(message: "3114394F, proceed to release the work to next phase?", parameters: "PROMPT_VALUE")
+                    input(message: "3114394F, proceed to release the work to next phase?", parameters: PROMPT_VALUE)
                 }
             }
 
