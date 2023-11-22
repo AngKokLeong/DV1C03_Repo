@@ -40,7 +40,10 @@ pipeline {
 
             stage ('S4 3114394F'){
                 steps {
+                    
+                    catchError(buildResult: 'SUCCESS', stageResult: 'ABORTED') {
                         input(id: 'userInput', message: 'Merge to?')
+                    }
                 }
                 
                 post {
