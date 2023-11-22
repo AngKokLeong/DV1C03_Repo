@@ -7,20 +7,20 @@ pipeline {
         }
 
         environment {
-            RELEASE_OUTCOME = ""
+            RELEASE_OUTCOME = false
         }
 
         stages {
 
             stage ('S1 3114394F') {
                 steps {
-                    sh "echo Stage1_3114394F : Release Environment Preparation Completed"
+                    echo "Stage1_3114394F : Release Environment Preparation Completed"
                 }
             }
 
             stage ('S2 3114394F'){
                 steps {
-                    sh "echo Stage2_3114394F : Release Container WebApp_3114394F Created Completed"
+                    echo "Stage2_3114394F : Release Container WebApp_3114394F Created Completed"
                 }
             }
 
@@ -29,12 +29,12 @@ pipeline {
                 parallel {
                     stage ('S3 3114394F API Test') {
                         steps {
-                            sh "echo Stage3_3114394F : API Test Completed"
+                            echo "Stage3_3114394F : API Test Completed"
                         }
                     }
                     stage ('S3 3114394F Scan Test') {
                         steps {
-                            sh "echo Stage3_3114394F : Scan Test Completed"
+                            echo "Stage3_3114394F : Scan Test Completed"
                         }
                     }
                 }
@@ -50,13 +50,13 @@ pipeline {
                 post {
                     success {
                         script{
-                            env.RELEASE_OUTCOME = true
+                            env.RELEASE_OUTCOME.toBoolean() = true
                         }
                     }
 
                     aborted {
                         script {
-                            env.RELEASE_OUTCOME = false
+                            env.RELEASE_OUTCOME.toBoolean() = false
                         }
                     }
                 }
@@ -68,7 +68,7 @@ pipeline {
 
             stage ('S5 3114394F'){
                 steps {
-                     sh "echo ${env.RELEASE_OUTCOME}"
+                     echo "${env.RELEASE_OUTCOME}"
                 }
             }
         }
