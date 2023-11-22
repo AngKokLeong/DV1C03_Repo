@@ -58,7 +58,9 @@ pipeline {
             stage ('S4 3114394F'){
                 steps {
                     script {
-                        env.PROMPT_VALUE = input(message: "3114394F, proceed to release the work to next phase?")
+                        def PROMPT_VALUE = input(id: 'PROMPT_VALUE' , message: "3114394F, proceed to release the work to next phase?")
+
+                        println(PROMPT_VALUE)
                     }
                     
                 }
@@ -66,7 +68,7 @@ pipeline {
 
             stage ('S5 3114394F'){
                 steps {
-                     sh "echo ${PROMPT_VALUE}"
+                     sh "echo ${env.PROMPT_VALUE}"
                 }
             }
         }
