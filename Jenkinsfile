@@ -52,15 +52,17 @@ pipeline {
 
                         script{
                             env.RELEASE_OUTCOME = true
-                            echo "${env.RELEASE_OUTCOME} in success block"
+                            
                         }
+                        echo "${env.RELEASE_OUTCOME} in success block"
                     }
 
                     aborted {
                         script {
                             env.RELEASE_OUTCOME = false
-                            echo "${env.RELEASE_OUTCOME} in aborted block"
+                            
                         }
+                        echo "${env.RELEASE_OUTCOME} in aborted block"
                     }
                 }
             }
