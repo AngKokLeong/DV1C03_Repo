@@ -69,9 +69,9 @@ pipeline {
                 steps {
                     script {
                         if (env.RELEASE_OUTCOME == true) {
-                            echo "${env.RELEASE_OUTCOME}"
+                            sh "echo ${env.RELEASE_OUTCOME}"
                         } else if (env.RELEASE_OUTCOME == false) {
-                            echo "${env.RELEASE_OUTCOME}"
+                            sh "echo ${env.RELEASE_OUTCOME}"
                         }
                     }
                 }
