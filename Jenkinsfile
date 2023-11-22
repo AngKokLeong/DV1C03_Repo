@@ -45,8 +45,8 @@ pipeline {
             stage ('S4 3114394F'){
                 steps {
                         input(id: 'userInput', message: 'Merge to?')
-                    }
                 }
+                
                 post {
                     success {
                         script{
