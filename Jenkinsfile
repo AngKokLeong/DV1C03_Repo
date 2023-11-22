@@ -68,9 +68,11 @@ pipeline {
             stage ('S5 3114394F'){
                 steps {
                     script {
-                        if (env.RELEASE_OUTCOME == true) {
+                        sh "echo ${env.RELEASE_OUTCOME}"
+
+                        if (env.RELEASE_OUTCOME == 'true') {
                             sh "echo ${env.RELEASE_OUTCOME}"
-                        } else if (env.RELEASE_OUTCOME == false) {
+                        } else if (env.RELEASE_OUTCOME == 'false') {
                             sh "echo ${env.RELEASE_OUTCOME}"
                         }
                     }
