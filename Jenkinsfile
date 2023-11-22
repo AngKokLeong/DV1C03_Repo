@@ -50,11 +50,15 @@ pipeline {
             stage ('S4 3114394F'){
                 steps {
                     script {
-                        env.RELEASE_OUTCOME = input(id: 'PROMPT_VALUE' , message: "3114394F, proceed to release the work to next phase?", ok: 'Select Option',
-                                    parameters: [choice(name: 'RELEASE_OUTCOME', choices: 'Proceed/Abort', description: 'What is the release scope?')]
-                        )
 
-                        echo "${env.RELEASE_OUTCOME}"
+                        def userInput = input(id: 'userInput', message: 'Merge to?',
+                        parameters: [[$class: 'ChoiceParameterDefinition', defaultValue: 'strDef', 
+                            description:'describing choices', name:'nameChoice', choices: "QA\nUAT\nProduction\nDevelop\nMaster"]
+                        ])
+
+                        println(userInput); //Use this value to branch to different logic if needed
+        
+                 
                     }
                     
                 }
