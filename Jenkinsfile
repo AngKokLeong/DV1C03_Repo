@@ -66,7 +66,7 @@ pipeline {
 
             stage ('S5 3114394F'){
                 steps {
-                     sh "echo ${env.PROMPT_VALUE}"
+                     sh "echo ${PROMPT_VALUE}"
                 }
             }
         }
