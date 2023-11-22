@@ -57,13 +57,13 @@ pipeline {
 
             stage ('S4 3114394F'){
                 steps {
-                    input(message: "3114394F, proceed to release the work to next phase?", parameters: PROMPT_VALUE)
+                    input(message: "3114394F, proceed to release the work to next phase?", parameters: [string('PROMPT_VALUE')])
                 }
             }
 
             stage ('S5 3114394F'){
                 steps {
-                     sh "echo Stage2_3114394F : Release Container WebApp_3114394F Created Completed"
+                     sh "echo ${PROMPT_VALUE}"
                 }
             }
         }
