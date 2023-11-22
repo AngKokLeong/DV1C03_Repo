@@ -42,26 +42,21 @@ pipeline {
                 steps {
                     
                     catchError(buildResult: 'SUCCESS', stageResult: 'ABORTED') {
-                        input(id: 'userInput', message: 'Merge to?')
+                        input(id: 'userInput', message: '3114349F, proceed to release the work to next phase?')
                     }
                 }
                 
                 post {
                     success {
-
                         script{
                             env.RELEASE_OUTCOME = true
-                            
                         }
-                        echo "${env.RELEASE_OUTCOME} in success block"
                     }
 
                     aborted {
                         script {
                             env.RELEASE_OUTCOME = false
-                            
                         }
-                        echo "${env.RELEASE_OUTCOME} in aborted block"
                     }
                 }
             }
@@ -71,6 +66,23 @@ pipeline {
             //https://www.jenkins.io/doc/book/pipeline/syntax/#post
 
             stage ('S5 3114394F'){
+                when {
+                    expression {
+                        env.RELEASE_OUTCOME.toBoolean() = true
+                    }
+                }
+                steps {
+                     echo "${env.RELEASE_OUTCOME}"
+                }
+            }
+
+
+            stage ('S5 3114394F'){
+                when {
+                    expression {
+                        env.RELEASE_OUTCOME.toBoolean() = false
+                    }
+                }
                 steps {
                      echo "${env.RELEASE_OUTCOME}"
                 }
