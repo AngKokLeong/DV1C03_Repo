@@ -6,10 +6,6 @@ pipeline {
             parallelsAlwaysFailFast()
         }
 
-        environment {
-            RELEASE_OUTCOME = false
-        }
-
         stages {
 
             stage ('S1 3114394F') {
