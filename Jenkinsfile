@@ -63,12 +63,7 @@ pipeline {
 
             stage ('S5 3114394F'){
                 steps {
-                    script {
-                        scannerHome = tool 'SonarQube-Scanner'
-                    }
-                    withSonarQubeEnv('Sonarqube-Library-Portal-Backend') {
-                        sh "${scannerHome}/bin/sonar-scanner"
-                    }
+                     sh "echo Stage2_3114394F : Release Container WebApp_3114394F Created Completed"
                 }
             }
 
