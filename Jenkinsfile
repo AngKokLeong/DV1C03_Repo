@@ -51,8 +51,7 @@ pipeline {
                 steps {
                     script {
 
-                        def userInput = input(id: 'userInput', message: 'Merge to?'
-                        ])
+                        def userInput = input(id: 'userInput', message: 'Merge to?')
 
                         println(userInput); //Use this value to branch to different logic if needed
         
