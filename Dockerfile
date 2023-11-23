@@ -2,8 +2,11 @@ FROM ubuntu:18.04
 
 WORKDIR /webapp
 
-COPY src/main.html ./
+COPY src ./
 
-#sudo systemctl status apache2
+RUN apt-get -yq update
+RUN apt-get -yq install apache2
 
-#/var/www folder is the place to store the files
+#https://myrestraining.com/blog/docker/how-to-run-docker-compose-in-detached-mode/
+#https://serverfault.com/questions/227190/how-do-i-ask-apt-get-to-skip-any-interactive-post-install-configuration-steps
+
