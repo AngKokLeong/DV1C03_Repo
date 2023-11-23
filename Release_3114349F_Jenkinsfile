@@ -17,8 +17,11 @@ pipeline {
             stage ('S2 3114394F'){
                 steps {
                     echo "Stage2_3114394F : Release Container WebApp_3114394F Created Completed"
+
+                    sh "docker compose stop"
+                    sh "docker compose rm -f"
                     //remove the container first 
-                    sh "docker compose down"
+                    //sh "docker compose down"
 
                     //https://serverfault.com/questions/227190/how-do-i-ask-apt-get-to-skip-any-interactive-post-install-configuration-steps
                     sh "docker compose up -d"
