@@ -1,8 +1,9 @@
 FROM ubuntu:18.04
 
+USER root
 WORKDIR /webapp
 
-RUN apt-get install apache2
+RUN sudo apt-get install apache2
 COPY src/main.html ./
 
 #sudo systemctl status apache2
