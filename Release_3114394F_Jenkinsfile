@@ -17,7 +17,8 @@ pipeline {
             stage ('S2 3114394F'){
                 steps {
                     echo "Stage2_3114394F : Release Container WebApp_3114394F Created Completed"
-                    sh "echo docker"
+                    sh "docker pull ubuntu:18.04"
+                    sh "docker run "
                 }
             }
 
