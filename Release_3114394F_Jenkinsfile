@@ -18,9 +18,7 @@ pipeline {
                 steps {
                     echo "Stage2_3114394F : Release Container WebApp_3114394F Created Completed"
 
-                    //sh "docker compose stop"
-                    //sh "docker compose rm -f"
-                    //sh "docker rmi wb1_image_3114394f -f"
+                    sh "docker compose down --rmi all -v"
                     //remove the container first 
                     //sh "docker compose down"
 
