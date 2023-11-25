@@ -20,6 +20,7 @@ pipeline {
 
                     sh "docker compose stop"
                     sh "docker compose rm -f"
+                    sh "docker rmi wb1_image_3114394f -f"
                     //remove the container first 
                     //sh "docker compose down"
 
