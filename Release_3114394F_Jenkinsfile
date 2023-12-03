@@ -16,17 +16,14 @@ pipeline {
 
             stage ('S2 3114394F'){
                 steps {
-                    echo "Stage2_3114394F : Release Container WebApp_3114394F Created Completed"
-
                     sh "docker compose down --rmi all -v"
-                    //remove the container first 
-                    //sh "docker compose down"
 
                     sh "docker image prune --all --force"
 
                     //https://serverfault.com/questions/227190/how-do-i-ask-apt-get-to-skip-any-interactive-post-install-configuration-steps
                     sh "docker compose up --build --force-recreate -V --detach"
 
+                    echo "Stage2_3114394F : Release Container WebApp_3114394F Created Completed"
                 }
             }
 
