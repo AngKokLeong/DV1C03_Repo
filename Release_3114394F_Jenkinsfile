@@ -11,7 +11,6 @@ pipeline {
 
             stage ('Checkout SCM') {
                 steps{
-                    cleanWs()
                     checkout scm
                     echo "Checkout Repository from GitHub"
                 }
@@ -89,16 +88,6 @@ pipeline {
             }
 
         }
-        //https://plugins.jenkins.io/ws-cleanup/#plugin-content-configuration
-        post {
-            always {
-                cleanWs(
-                    cleanWhenNotBuilt: false,
-                    deleteDirs: true,
-                    disableDeferredWipeout: true,
-                    notFailBuild: true
-                )
-            }
-        }
+
 
 }
