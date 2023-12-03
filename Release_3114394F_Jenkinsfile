@@ -22,7 +22,7 @@ pipeline {
                     //remove the container first 
                     //sh "docker compose down"
 
-                    sh "docker image prune --all"
+                    sh "docker image prune --all --force"
 
                     //https://serverfault.com/questions/227190/how-do-i-ask-apt-get-to-skip-any-interactive-post-install-configuration-steps
                     sh "docker compose up --build --force-recreate -V --detach"
