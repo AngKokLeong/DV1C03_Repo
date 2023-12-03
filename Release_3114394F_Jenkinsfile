@@ -4,9 +4,17 @@ pipeline {
 
         options {
             parallelsAlwaysFailFast()
+            skipDefaultCheckout(true)
         }
 
         stages {
+
+            stage ('Checkout SCM') {
+                cleanWs()
+                checkout scm
+
+                echo "Checkout Repository from GitHub"
+            }
 
             stage ('S1 3114394F') {
                 steps {
@@ -80,4 +88,15 @@ pipeline {
             }
 
         }
+        post {
+            always {
+                cleanWs(
+                    cleanWhenNotBuilt: false,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true
+                )
+            }
+        }
+
 }
