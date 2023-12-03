@@ -10,10 +10,11 @@ pipeline {
         stages {
 
             stage ('Checkout SCM') {
-                cleanWs()
-                checkout scm
-
-                echo "Checkout Repository from GitHub"
+                steps{
+                    cleanWs()
+                    checkout scm
+                    echo "Checkout Repository from GitHub"
+                }
             }
 
             stage ('S1 3114394F') {
@@ -88,6 +89,7 @@ pipeline {
             }
 
         }
+        //https://plugins.jenkins.io/ws-cleanup/#plugin-content-configuration
         post {
             always {
                 cleanWs(
